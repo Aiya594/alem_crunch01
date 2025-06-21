@@ -6,22 +6,35 @@ import (
 	"github.com/alem-platform/ap"
 )
 
-// func PrintError(err string) {
-// 	l=len(err)
-// 	mes:=make([]char, l)
-// 	for i := 0; i < l; i++ {
+func PrintError(err string) {
+	for i := 0; i < len(err); i++ {
+		ap.PutRune(rune(err[i]))
+	}
+}
 
-// 		deg:=1
-// 		for mes[i]/deg>=10{
-// 			deg*=10
-// 		}
-// 		for deg>10{
-// 			letter=
-// 		}
-// 		ap.PutRune(rune(err[i] + 48))
+func IsZero() {
+	message := "Error: h or w cannot be equal to 0"
+	PrintError(message)
+	ap.PutRune('\n')
+}
 
-// 	}
-// }
+func TooMuch() {
+	message := "Error: too much numbers in a line"
+	PrintError(message)
+	ap.PutRune('\n')
+}
+
+func NotInRange() {
+	message := "Error: you can only use 0, 1, 2 or 3"
+	PrintError(message)
+	ap.PutRune('\n')
+}
+
+func IsNegative() {
+	message := "Error: h and w cannot be negative"
+	PrintError(message)
+	ap.PutRune('\n')
+}
 
 func drawRow(fill []int) {
 	var we int = len(fill)
@@ -83,7 +96,9 @@ func main() {
 	fmt.Scanf("%d %d", &h, &w) // first line input
 
 	if h == 0 || w == 0 {
-		// ErrorMes()
+		IsZero() // error
+	} else if h < 0 || w < 0 {
+		IsNegative()
 	} else {
 		// initializing 2D array
 		ma := make([][]int, h)
@@ -91,17 +106,19 @@ func main() {
 		for i := range ma {
 			ma[i] = make([]int, w)
 		}
+
 		// filling 2d array from terminal
 		for i := 0; i < h; i++ {
 			var nums string
 			fmt.Scanf("%s", &nums) // to read each line as string
-			if len(nums) > w {
-				// ErrorMes() // it will be changed to ap.PutRune()
+			if len(nums) != w {
+				TooMuch()
+				return
 			}
 			for j := 0; j < w; j++ {
 				ma[i][j] = int(nums[j] - 48)
 				if ma[i][j] < 0 || ma[i][j] > 3 {
-					// ErrorMes()
+					NotInRange()
 					return
 				}
 			}
