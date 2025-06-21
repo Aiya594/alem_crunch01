@@ -14,7 +14,7 @@ func main() {
 	}
 
 	for i := 0; i < h; i++ { // second input
-		// fmt.Scanf("")
+		fmt.Scanf()
 	}
 	fmt.Print(ma)
 }
