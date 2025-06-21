@@ -50,11 +50,8 @@ func drawMap(arr [][]int) {
 
 	// insides
 	for i := 0; i < hei; i++ {
-		// for j := 0; j < wei; j++ {
 		// draw insides (_/X)
 		drawRow(wei, arr[i])
-		//fmt.Printf("\n")
-		//}
 	}
 }
 
