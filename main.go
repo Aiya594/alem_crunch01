@@ -93,7 +93,7 @@ func drawMap(arr [][]int) {
 
 func main() {
 	var h, w int
-	fmt.Scanf("%d %d", &h, &w) // first line input
+	fmt.Scanf("%d %d\n", &h, &w) // first line input
 
 	if h == 0 || w == 0 {
 		IsZero() // error
@@ -110,7 +110,7 @@ func main() {
 		// filling 2d array from terminal
 		for i := 0; i < h; i++ {
 			var nums string
-			fmt.Scanf("%s", &nums) // to read each line as string
+			fmt.Scanf("%s\n", &nums) // to read each line as string
 			if len(nums) != w {
 				TooMuch()
 				return
