@@ -22,7 +22,9 @@ func drawRow(fill []int) {
 			fmt.Printf("|")
 			// filling 1 block with Space or Xs
 			for k := 0; k < 7; k++ {
-				if fill[i] == 1 {
+				if j == 2 && (fill[i] == 1 || fill[i] == 2 || fill[i] == 3) {
+					fmt.Printf("_")
+				} else if fill[i] == 1 {
 					fmt.Printf(" ")
 				} else if fill[i] == 0 {
 					fmt.Printf("X")
@@ -46,18 +48,18 @@ func drawRow(fill []int) {
 			fmt.Printf("\n")
 		}
 	}
-	// bottom line
-	fmt.Printf(" ")
-	for i := 0; i < we; i++ {
-		for j := 0; j < 8; j++ {
-			if fill[i] == 0 {
-				fmt.Printf(" ")
-			} else {
-				fmt.Printf("—")
-			}
-		}
-	}
-	fmt.Printf("\n")
+	// // bottom line
+	// fmt.Printf(" ")
+	// for i := 0; i < we; i++ {
+	// 	for j := 0; j < 8; j++ {
+	// 		if fill[i] == 0 {
+	// 			fmt.Printf(" ")
+	// 		} else {
+	// 			fmt.Printf("—")
+	// 		}
+	// 	}
+	// }
+	// fmt.Printf("\n")
 }
 
 func drawMap(arr [][]int) {
