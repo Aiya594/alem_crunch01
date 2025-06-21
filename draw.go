@@ -1,4 +1,4 @@
-package main
+//package main
 
 import "fmt" //"github.com/alem-platform/ap"
 
@@ -41,8 +41,8 @@ func drawMap(arr [][]int) {
 	// upper bound
 	var l int = wei*8 - 1
 	if hei != 0 {
-		fmt.Printf(" ")
-		for i := 0; i < l; i++ {
+		fmt.Printf(" ")	// fmt.Print([][]int{{1, 1, 1}, {1, 1, 1}})
+		fmt.Printf("\n")
 			fmt.Printf("_") // ap.PutRune('-')
 		}
 		fmt.Printf("\n")

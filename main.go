@@ -11,6 +11,72 @@ func ErrorMes() {
 	fmt.Print("R")
 	fmt.Print("O")
 	fmt.Print("R")
+	fmt.Print("/n")
+}
+
+func drawRow(fill []int) {
+	var we int = len(fill)
+	// draw blocks
+	for j := 0; j < 3; j++ { // each block - 3 lines
+		for i := 0; i < we; i++ {
+			fmt.Printf("|")
+			// filling 1 block with Space or Xs
+			for k := 0; k < 7; k++ {
+				if fill[i] == 1 {
+					fmt.Printf(" ")
+				} else if fill[i] == 0 {
+					fmt.Printf("X")
+				} else if fill[i] == 2 {
+					if j == 1 && k == 3 {
+						fmt.Printf(">")
+					} else {
+						fmt.Printf(" ")
+					}
+				} else if fill[i] == 3 {
+					if j == 1 && k == 3 {
+						fmt.Printf("$")
+					} else {
+						fmt.Printf(" ")
+					}
+				}
+			}
+		}
+		fmt.Printf("|")
+		if j != 3 {
+			fmt.Printf("\n")
+		}
+	}
+	// bottom line
+	fmt.Printf(" ")
+	for i := 0; i < we; i++ {
+		for j := 0; j < 8; j++ {
+			if fill[i] == 0 {
+				fmt.Printf(" ")
+			} else {
+				fmt.Printf("—")
+			}
+		}
+	}
+	fmt.Printf("\n")
+}
+
+func drawMap(arr [][]int) {
+	var hei, wei int = len(arr), len(arr[0])
+	// upper bound
+	var l int = wei*8 - 1
+	if hei != 0 {
+		fmt.Printf(" ")
+		for i := 0; i < l; i++ {
+			fmt.Printf("_") // ap.PutRune('-')
+		}
+		fmt.Printf("\n")
+	}
+
+	// insides
+	for i := 0; i < hei; i++ {
+		// draw insides (_/X)
+		drawRow(arr[i])
+	}
 }
 
 func main() {
@@ -31,14 +97,22 @@ func main() {
 			var nums string
 			fmt.Scanf("%s", &nums) // to read each line as string
 			if len(nums) > w {
-				fmt.Print("ERROR") // it will be changed to ap.PutRune()
+				ErrorMes() // it will be changed to ap.PutRune()
 			}
 			for j := 0; j < w; j++ {
 				ma[i][j] = int(nums[j] - 48)
+				if ma[i][j] < 0 || ma[i][j] > 3 {
+					ErrorMes()
+					return
+				}
 			}
 		}
 
+		// fmt.Print(ma)
+
+		drawMap(ma)
 		fmt.Print(ma)
+		fmt.Printf("\n")
 
 	}
 }
