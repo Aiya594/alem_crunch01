@@ -1,17 +1,14 @@
 package main
 
 import (
-	//"github.com/alem-platform/ap"
 	"fmt"
+
+	"github.com/alem-platform/ap"
 )
 
-func ErrorMes() {
-	fmt.Print("E")
-	fmt.Print("R")
-	fmt.Print("R")
-	fmt.Print("O")
-	fmt.Print("R")
-	fmt.Print("/n")
+func PrintError(err string) {
+	for i := 0; i < len(err); i++ {
+	}
 }
 
 func drawRow(fill []int) {
@@ -23,29 +20,29 @@ func drawRow(fill []int) {
 			// filling 1 block with Space or Xs
 			for k := 0; k < 7; k++ {
 				if j == 2 && (fill[i] == 1 || fill[i] == 2 || fill[i] == 3) {
-					fmt.Printf("_")
+					ap.PutRune('_')
 				} else if fill[i] == 1 {
-					fmt.Printf(" ")
+					ap.PutRune(' ')
 				} else if fill[i] == 0 {
-					fmt.Printf("X")
+					ap.PutRune('X')
 				} else if fill[i] == 2 {
 					if j == 1 && k == 3 {
-						fmt.Printf(">")
+						ap.PutRune('>')
 					} else {
-						fmt.Printf(" ")
+						ap.PutRune(' ')
 					}
 				} else if fill[i] == 3 {
 					if j == 1 && k == 3 {
-						fmt.Printf("$")
+						ap.PutRune('@')
 					} else {
-						fmt.Printf(" ")
+						ap.PutRune(' ')
 					}
 				}
 			}
 		}
-		fmt.Printf("|")
+		ap.PutRune('|')
 		if j != 3 {
-			fmt.Printf("\n")
+			ap.PutRune(' ')
 		}
 	}
 }
@@ -55,11 +52,11 @@ func drawMap(arr [][]int) {
 	// upper bound
 	var l int = wei*8 - 1
 	if hei != 0 {
-		fmt.Printf(" ")
+		ap.PutRune(' ')
 		for i := 0; i < l; i++ {
-			fmt.Printf("_") // ap.PutRune('-')
+			ap.PutRune('_')
 		}
-		fmt.Printf("\n")
+		ap.PutRune('\n')
 	}
 
 	// insides
@@ -74,7 +71,7 @@ func main() {
 	fmt.Scanf("%d %d", &h, &w) // first line input
 
 	if h == 0 || w == 0 {
-		ErrorMes()
+		// ErrorMes()
 	} else {
 		// initializing 2D array
 		ma := make([][]int, h)
@@ -92,17 +89,15 @@ func main() {
 			for j := 0; j < w; j++ {
 				ma[i][j] = int(nums[j] - 48)
 				if ma[i][j] < 0 || ma[i][j] > 3 {
-					ErrorMes()
+					// ErrorMes()
 					return
 				}
 			}
 		}
 
-		// fmt.Print(ma)
-
 		drawMap(ma)
-		fmt.Print(ma)
-		fmt.Printf("\n")
+
+		ap.PutRune('\n')
 
 	}
 }
