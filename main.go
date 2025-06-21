@@ -6,17 +6,29 @@ import (
 	"github.com/alem-platform/ap"
 )
 
-func PrintError(err string) {
-	for i := 0; i < len(err); i++ {
-	}
-}
+// func PrintError(err string) {
+// 	l=len(err)
+// 	mes:=make([]char, l)
+// 	for i := 0; i < l; i++ {
+
+// 		deg:=1
+// 		for mes[i]/deg>=10{
+// 			deg*=10
+// 		}
+// 		for deg>10{
+// 			letter=
+// 		}
+// 		ap.PutRune(rune(err[i] + 48))
+
+// 	}
+// }
 
 func drawRow(fill []int) {
 	var we int = len(fill)
 	// draw blocks
 	for j := 0; j < 3; j++ { // each block - 3 lines
 		for i := 0; i < we; i++ {
-			fmt.Printf("|")
+			ap.PutRune('|')
 			// filling 1 block with Space or Xs
 			for k := 0; k < 7; k++ {
 				if j == 2 && (fill[i] == 1 || fill[i] == 2 || fill[i] == 3) {
@@ -42,7 +54,7 @@ func drawRow(fill []int) {
 		}
 		ap.PutRune('|')
 		if j != 3 {
-			ap.PutRune(' ')
+			ap.PutRune('\n')
 		}
 	}
 }
@@ -84,7 +96,7 @@ func main() {
 			var nums string
 			fmt.Scanf("%s", &nums) // to read each line as string
 			if len(nums) > w {
-				ErrorMes() // it will be changed to ap.PutRune()
+				// ErrorMes() // it will be changed to ap.PutRune()
 			}
 			for j := 0; j < w; j++ {
 				ma[i][j] = int(nums[j] - 48)
