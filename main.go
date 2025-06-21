@@ -48,18 +48,6 @@ func drawRow(fill []int) {
 			fmt.Printf("\n")
 		}
 	}
-	// // bottom line
-	// fmt.Printf(" ")
-	// for i := 0; i < we; i++ {
-	// 	for j := 0; j < 8; j++ {
-	// 		if fill[i] == 0 {
-	// 			fmt.Printf(" ")
-	// 		} else {
-	// 			fmt.Printf("—")
-	// 		}
-	// 	}
-	// }
-	// fmt.Printf("\n")
 }
 
 func drawMap(arr [][]int) {
